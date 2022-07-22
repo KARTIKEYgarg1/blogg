@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+{% block body %}
+<h1 class="p-4">Hello world</h1>
+<div class="container p-2">
+        {% for item in object_list %}
+        <a href="{% url 'article_detail' item.pk %}">{{item.title}}</a>
+        <p>{{item.author}}</p>
+        <p>{{item.body}}</p>
+        {% if user.is_authenticated %}
+        <a href="{% url 'article_update' item.pk %}">Edit</a>
+        <a href="{% url 'article_delete' item.pk %}">Delete</a>
+        {% endif %}
+        <hr />
+        {% endfor %} 
+</div>
+{% endblock body %} 
+{% block title %}Blogger | Home{% endblock title %}

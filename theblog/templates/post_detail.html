@@ -1,0 +1,22 @@
+{% extends 'base.html' %} 
+{% block body %}
+<h1 class="p-4">Article Detail</h1>
+<div class="container py-2">
+<h2 class="text-uppercase">{{post.title}}</h2>
+<small class="fst-italic">Created on {{post.post_date}}</small>
+<small class="italics fst-italic">by {{post.author}}</small>
+<hr />
+<p class="fw-light">{{post.body}}</p>
+<button class="btn btn-primary my-5">
+    <a href="{% url 'home' %}" class="text-decoration-none text-light">Back</a>
+</button>
+<button class="btn btn-danger my-5">
+    <a href="{% url 'article_delete' post.pk %}" class="text-decoration-none text-light">Delete Post</a>
+</button>
+<button class="btn btn-warning my-5">
+    <a href="{% url 'article_update' post.pk %}" class="text-decoration-none text-light">Edit Post</a>
+</button>
+
+       </div>
+{% endblock body %}
+{% block title %}POST | {{post.title|slice:'0:10'}}{% endblock title %}

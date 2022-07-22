@@ -1,0 +1,21 @@
+{% extends 'base.html' %} 
+{% block body %}
+{% if user.is_autheticated %}
+<form method="post" class="container">
+    <div class="mb-3">
+        <h1 class="p-4">Delete Post? {{post.title}}</h1>
+        {% csrf_token %}
+        <button class="btn btn-warning">Yes!Delete</button>
+        <button class="btn btn-primary my-5">
+            <a href="{% url 'home' %}" class="text-decoration-none text-light">No! Take me back</a>
+        </button>
+        </form>
+{% else %}
+<center>
+<h1>
+    Error 404
+</h1>
+</center>
+        {% endif %}
+{% endblock body %} 
+{% block title %}Blogger | Delete{% endblock title %}
